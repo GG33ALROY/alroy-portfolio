@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alroy Rodrigues — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#02050a;--card:#07101c;--line:#12263d;--tx:#e8eef6;--mut:#8fa3bb;--blue:#0e5a94;--pill:#bfe0ff;--red:#c8102e}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:Montserrat,system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.big,.astat-num{font-family:Anton,Impact,sans-serif;font-weight:400;letter-spacing:.02em;text-transform:uppercase}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:96px 0;position:relative;background:radial-gradient(ellipse 60% 40% at 0 0,rgba(14,90,148,.35),transparent 70%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:12px 32px;background:rgba(2,5,10,.7);backdrop-filter:blur(14px)}
+.nav-logo{font-family:Anton;font-size:1.5rem;border:2px solid #fff;padding:0 8px;line-height:1.3}
+.nav-links{display:flex;gap:6px;list-style:none;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.nav-links a{display:block;padding:5px 14px;border-radius:99px;color:var(--mut);transition:.25s}
+.nav-links a:hover{color:#fff}
+.nav-links a.act{background:var(--pill);color:#04121f;font-weight:600}
+#hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:80px;background:radial-gradient(ellipse 70% 60% at 85% 100%,rgba(14,90,148,.7),transparent 70%),linear-gradient(180deg,#02050a,#031326)}
+.hero-inner{max-width:1100px;margin:0 auto;padding:0 24px;width:100%}
+.portrait{position:relative;width:min(300px,70vw);aspect-ratio:1;border-radius:50% 50% 50% 0;background:var(--red);display:grid;place-items:center;overflow:hidden;box-shadow:0 0 80px rgba(200,16,46,.35)}
+.portrait b{font-family:Anton;font-size:6rem;color:#fff;opacity:.9}
+.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.hero-chip:before{content:"";width:10px;height:10px;background:#fff}
+h1{font-size:clamp(3.6rem,11vw,8rem);line-height:.95;margin:14px 0 18px}
+.name-accent{color:transparent;-webkit-text-stroke:2px var(--pill)}
+.yr{font-family:Anton;font-size:1.6rem;color:var(--mut);margin-left:10px}
+.hero-sub{max-width:520px;color:var(--mut);font-size:.98rem}
+.menu{display:flex;flex-direction:column;gap:2px;margin-top:30px;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;width:max-content}
+.menu a{color:var(--mut);padding:2px 0;transition:.25s}
+.menu a:hover{color:#fff;transform:translateX(8px)}
+.menu a:hover:before{content:"▸ ";color:var(--pill)}
+.socials{display:flex;gap:12px;margin-top:24px}
+.soc{width:44px;height:44px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-size:1.1rem;font-weight:700;transition:.25s}
+.soc:hover{transform:scale(1.12);background:var(--pill)}
+.sec-label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pill);margin-bottom:6px}
+h2{font-size:clamp(2.2rem,6vw,3.6rem);margin-bottom:36px;line-height:1.05}
+h3{font-size:1.25rem;margin-bottom:12px}
+.reveal{opacity:0;transform:translateY(28px);transition:.7s}
+.reveal.in{opacity:1;transform:none}
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.about-text p{color:var(--mut);margin-bottom:16px;font-size:.95rem}
+.about-tags,.pill-group,.contrib-pills{display:flex;flex-wrap:wrap;gap:8px}
+.tag,.pill,.cp{font-size:.76rem;padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:#c3d2e4;transition:.2s}
+.pill:hover,.tag:hover{border-color:var(--pill);color:#fff}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.astat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.astat-num{font-size:2.2rem;line-height:1.1;color:var(--pill)}
+.astat-label{font-size:.75rem;color:var(--mut);text-transform:uppercase;letter-spacing:.1em}
+.skills-row,.lead-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.skill-col,.lead-card,.project-card,.exp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;transition:.3s}
+.skill-col:hover,.lead-card:hover{transform:translateY(-4px);border-color:var(--pill);box-shadow:0 0 40px rgba(14,90,148,.35)}
+.skill-col-icon,.lead-icon{font-size:1.8rem;margin-bottom:8px}
+.lead-card .org{color:var(--pill);font-size:.82rem;margin-bottom:12px}
+ul{list-style:none}
+.lead-card ul,.exp ul{color:var(--mut);font-size:.9rem}
+.lead-card li,.exp li{padding-left:18px;position:relative;margin-bottom:7px}
+.lead-card li:before,.exp li:before{content:"▸";position:absolute;left:0;color:var(--pill)}
+.exp{display:grid;grid-template-columns:240px 1fr;gap:32px;border-left:4px solid var(--red)}
+.exp .when{color:var(--pill);font-size:.8rem;letter-spacing:.08em}
+.exp .role{font-size:1.6rem;line-height:1.1;margin:6px 0}
+.exp .org{color:var(--mut);font-size:.88rem}
+.exp+.exp{margin-top:20px}.also{margin-top:18px;font-size:.78rem;color:var(--mut)}
+.also .pill{margin:6px 6px 0 0}
+.project-hero-block{border-radius:20px;padding:48px 32px;margin-bottom:28px;background:radial-gradient(circle at 90% 0,rgba(14,90,148,.7),transparent 55%),radial-gradient(circle at 0 100%,rgba(200,16,46,.35),transparent 50%),var(--card);border:1px solid var(--line)}
+.ph-badge{display:inline-block;font-size:.72rem;color:#04121f;background:var(--pill);padding:4px 14px;border-radius:99px;font-weight:600}
+.ph-title{font-family:Anton;font-size:clamp(3rem,8vw,5.5rem);line-height:1;margin:14px 0 4px;text-transform:uppercase}
+.ph-sub{color:var(--mut);margin-bottom:18px}
+.ph-link{color:var(--pill);font-weight:600}
+.project-card p{color:var(--mut);margin:8px 0 16px;font-size:.92rem}
+.reel-head{margin:60px 0 4px}
+.reel-head h2{margin:0;font-size:2rem}
+.hint{font-size:.76rem;color:var(--mut);margin:6px 0 0}
+.work-grid{display:grid;gap:16px;margin-top:18px}
+.work-grid.h{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.work-grid.v{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.work{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.3s}
+.work:hover{border-color:var(--pill);transform:translateY(-4px);box-shadow:0 14px 50px rgba(14,90,148,.45)}
+.media{position:relative;aspect-ratio:16/9;background:#000 center/cover;cursor:pointer;overflow:hidden}
+.v .media{aspect-ratio:9/16}
+.media.ig{background-image:linear-gradient(160deg,#0e3a63,#7a0c22 70%,#02050a)}
+.media iframe{position:absolute;inset:0;width:100%;height:100%;border:0;animation:fade .4s}
+.ig iframe{height:calc(100% + 140px);top:-56px;background:#fff}
+@keyframes fade{from{opacity:0}}
+.play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;transition:.3s}
+.play span{width:54px;height:54px;border-radius:50%;background:rgba(2,5,10,.6);backdrop-filter:blur(6px);display:grid;place-items:center;padding-left:4px;border:1px solid rgba(255,255,255,.3)}
+.media.on .play{opacity:0}
+.platform{position:absolute;top:10px;left:10px;font-size:.66rem;background:var(--pill);color:#04121f;font-weight:600;padding:2px 10px;border-radius:99px;pointer-events:none;z-index:2}
+.info{padding:14px 16px 16px}
+.info h3{font-size:1rem;margin-bottom:2px}
+.info p{font-size:.8rem;color:var(--mut)}
+.info a{display:inline-block;margin-top:8px;font-size:.8rem;color:var(--pill);font-weight:600}
+#contact{text-align:center;background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(14,90,148,.55),transparent 70%)}
+.contact-inner{max-width:720px;margin:0 auto}
+.contact-inner p{color:var(--mut)}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+.contact-chip{border:1px solid var(--line);background:var(--card);padding:11px 20px;border-radius:99px;font-size:.85rem;transition:.25s}
+a.contact-chip:hover{border-color:var(--pill);transform:translateY(-2px)}
+.big{font-size:clamp(3.5rem,13vw,9rem);line-height:.95;color:#5b6772;margin-top:64px;opacity:.7}
+footer{text-align:center;padding:36px 24px;color:var(--mut);font-size:.8rem}
+.footer-logo{font-family:Anton;font-size:1.3rem;color:var(--tx);letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:800px){.about-grid,.exp,.hero-inner{grid-template-columns:1fr}.nav-links{display:none}.portrait{margin:0 auto}section{padding:72px 0}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">AR</div>
+  <ul class="nav-links">
+    <li><a href="#hero" class="act">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-chip">AI Content Creator</div>
+      <h1>Alroy<br><span class="name-accent">Rodrigues</span></h1>
+      <p class="hero-sub">AI Content Creator &amp; Digital Marketing Strategist based in Mumbai. I build cinematic digital experiences through storytelling, generative AI, and data-driven growth.</p>
+      <div class="menu"><a href="#projects">Start — See My Work</a><a href="#experience">Experience</a><a href="#contact">Get In Touch</a></div>
+      <div class="socials">
+        <a class="soc" href="https://www.youtube.com/@bAible.0" target="_blank" rel="noopener" title="YouTube @bAible.0">▶</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-label reveal">Hello, I am Alroy</div>
+    <h2 class="reveal">About Me</h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>Computer Engineering graduate and AI-driven content creator passionate about building cinematic digital experiences through storytelling, AI tools, and data-driven strategy.</p>
+        <p>I specialize in blending creativity with analytics — using generative AI workflows, audience insights, and storytelling techniques to create content that captures attention and drives engagement.</p>
+        <div class="about-tags"><span class="tag">AI Content Creation</span><span class="tag">YouTube SEO</span><span class="tag">Prompt Engineering</span><span class="tag">Growth Strategy</span><span class="tag">Data Analytics</span><span class="tag">Cinematic Storytelling</span></div>
+      </div>
+      <div class="about-stats">
+        <div class="astat"><div class="astat-num">7.1M+</div><div class="astat-label">Total Views</div></div>
+        <div class="astat"><div class="astat-num">10.3K+</div><div class="astat-label">Subscribers</div></div>
+        <div class="astat"><div class="astat-num">18.9K+</div><div class="astat-label">Watch Hours</div></div>
+        <div class="astat"><div class="astat-num">82.5K+</div><div class="astat-label">Likes</div></div>
+        <div class="astat"><div class="astat-num">7M+</div><div class="astat-label">Shorts Views</div></div>
+        <div class="astat"><div class="astat-num">1.2M+</div><div class="astat-label">Impressions</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-label reveal">Expertise</div>
+    <h2 class="reveal">Software Skills</h2>
+    <div class="skills-row reveal">
+      <div class="skill-col"><div class="skill-col-icon">🎬</div><h3>AI Content Creation</h3>
+        <div class="pill-group"><span class="pill">AI Video Generation</span><span class="pill">Prompt Engineering</span><span class="pill">Cinematic Storytelling</span><span class="pill">AI Voiceovers</span><span class="pill">Short &amp; Long-form</span><span class="pill">CapCut Editing</span></div></div>
+      <div class="skill-col"><div class="skill-col-icon">📈</div><h3>Marketing &amp; Growth</h3>
+        <div class="pill-group"><span class="pill">YouTube SEO</span><span class="pill">Keyword Research</span><span class="pill">Meta Ads (Business Suite)</span><span class="pill">Content Optimization</span><span class="pill">Audience Engagement</span><span class="pill">Trend Analysis</span><span class="pill">Competitor Research</span></div></div>
+      <div class="skill-col"><div class="skill-col-icon">📊</div><h3>Analytics</h3>
+        <div class="pill-group"><span class="pill">Google Analytics</span><span class="pill">Search Console</span><span class="pill">CTR Optimization</span><span class="pill">Retention Analysis</span><span class="pill">Performance Reporting</span><span class="pill">Audience Insights</span></div></div>
+    </div>
+    <div style="margin-top:48px" class="reveal">
+      <div class="sec-label" style="margin-bottom:16px">Arsenal</div>
+      <div class="pill-group">
+        <span class="pill">GPT</span><span class="pill">Gemini</span><span class="pill">Veo3</span><span class="pill">SORA AI</span><span class="pill">Seedance</span><span class="pill">Kling AI</span><span class="pill">ElevenLabs</span><span class="pill">Hailuo AI</span><span class="pill">Digen AI</span><span class="pill">Piclumen</span><span class="pill">OpenArt (AI Studio)</span><span class="pill">SUNO AI</span><span class="pill">Google AI Studio</span><span class="pill">CapCut</span><span class="pill">Filmora</span><span class="pill">Photoshop</span><span class="pill">Figma</span><span class="pill">Adobe Premiere Pro</span><span class="pill">Google Ads Keyword Planner</span><span class="pill">Google Analytics</span><span class="pill">Meta Business Suite</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-label reveal">Experience</div>
+    <h2 class="reveal">Work Experience</h2>
+    <div class="exp reveal">
+      <div>
+        <div class="when">JUL 2026 — PRESENT</div>
+        <div class="role h3" style="font-family:Anton;text-transform:uppercase">Digital Marketing Associate</div>
+        <div class="org">Jaico Publishing House · Mumbai, India</div>
+      </div>
+      <div>
+        <p style="color:var(--mut);font-size:.9rem;margin-bottom:12px">Working across digital marketing, creative content, and audience engagement to strengthen brand visibility and drive growth.</p>
+        <ul>
+          <li>Producing and editing engaging video content, including AI-generated creatives and videos for marketing campaigns and social media</li>
+          <li>Planning and managing content calendars to ensure consistent, strategic communication across digital platforms</li>
+          <li>Building and engaging online communities through meaningful interactions and audience growth</li>
+          <li>Supporting the promotion and execution of book launches, author events, and marketing initiatives</li>
+          <li>Monitoring campaign performance through analytics, tracking key metrics, and optimising strategies to improve reach, engagement, and growth</li>
+          <li>Collaborating with cross-functional teams to deliver impactful digital campaigns aligned with business objectives</li>
+        </ul>
+        <div class="also">Learned on the job: <span class="pill">Meta Business Suite — running ads</span></div>
+      </div>
+    </div>
+    <div class="exp reveal">
+      <div>
+        <div class="when">AUG 2025 — JUN 2026</div>
+        <div class="role h3" style="font-family:Anton;text-transform:uppercase">Digital Analyst &amp; Growth Associate</div>
+        <div class="org">Feedspot · Mumbai, India</div>
+      </div>
+      <div>
+        <ul>
+          <li>Monitored website performance using Google Analytics, identifying key trends and opportunities for digital growth</li>
+          <li>Performed keyword research using Google Ads Keyword Planner to identify high-volume search terms</li>
+          <li>Conducted keyword research and SEO optimization to improve search visibility and digital reach</li>
+          <li>Assisted in analyzing digital marketing processes and recommending improvements for better operational efficiency</li>
+          <li>Prepared performance insights and reports (rankings)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-label reveal">Featured Work</div>
+    <h2 class="reveal">Recap Project</h2>
+
+    <div class="project-hero-block reveal">
+      <div class="ph-badge">🎥 YouTube Channel · 10K+ Subscribers</div>
+      <div class="ph-title">bAible</div>
+      <div class="ph-sub">AI-Powered Bible Storytelling — Cinematic · Emotional · Scalable</div>
+      <a href="https://www.youtube.com/@bAible.0" target="_blank" rel="noopener" class="ph-link">Watch on YouTube ↗</a>
+    </div>
+
+    <div class="reel-head reveal"><div class="sec-label">Showreel</div><h2>Long-form &amp; Ads</h2></div>
+    <p class="hint">Hover (or tap) a video for a live preview. Use “Watch” to open the full video.</p>
+    <div class="work-grid h" id="gridH"></div>
+
+    <div class="reel-head reveal"><div class="sec-label">Short-form</div><h2>Reels &amp; Shorts</h2></div>
+    <div class="work-grid v" id="gridV"></div>
+
+    <div class="project-card reveal" style="margin-top:56px">
+      <div class="ph-badge" style="margin-bottom:14px">📱 Instagram Campaign</div>
+      <h3>Kha &amp; RB Café — Digital Campaign</h3>
+      <p>Developed and executed Instagram-based marketing campaigns focused on increasing engagement and strengthening the café's digital brand presence.</p>
+      <div class="contrib-pills"><span class="cp">Campaign Strategy</span><span class="cp">Content Creation</span><span class="cp">Visual Branding</span><span class="cp">Audience Storytelling</span><span class="cp">Engagement Tracking</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <div class="sec-label reveal">Community</div>
+    <h2 class="reveal">Leadership &amp; Volunteering</h2>
+    <div class="lead-grid">
+      <div class="lead-card reveal"><div class="lead-icon">💻</div><h3>Social Media Head</h3><div class="org">Code-X, SFIT</div>
+        <ul><li>Managed social media &amp; digital branding</li><li>Promoted technical events &amp; initiatives</li><li>Drove engagement through strategic posting</li></ul></div>
+      <div class="lead-card reveal"><div class="lead-icon">⛪</div><h3>Social Media Manager</h3><div class="org">St. Joseph PYC Parish</div>
+        <ul><li>Managed full Instagram presence</li><li>Created events &amp; youth engagement content</li><li>Improved online visibility for the community</li></ul></div>
+      <div class="lead-card reveal"><div class="lead-icon">🤝</div><h3>Volunteer</h3><div class="org">Muskurahat Foundation NGO</div>
+        <ul><li>On-ground fundraising for underprivileged children</li><li>Public outreach across Mumbai</li><li>Awareness campaigns &amp; communication</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-inner reveal">
+      <div class="sec-label" style="margin-bottom:12px">Let's Connect</div>
+      <h2 style="margin-bottom:18px">Ready to build<br>something great?</h2>
+      <p>Open to freelance projects and collaborations in AI content, digital marketing, and growth strategy.</p>
+      <div class="contact-row">
+        <a href="mailto:alroyrodriguez99108@gmail.com" class="contact-chip">✉️ alroyrodriguez99108@gmail.com</a>
+        <a href="https://www.youtube.com/@bAible.0" target="_blank" rel="noopener" class="contact-chip">🎬 bAible on YouTube</a>
+        <span class="contact-chip">📍 Mumbai, India</span>
+      </div>
+      <div class="big">Thank You</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Alroy Rodrigues</div>
+  <p>© Alroy Rodrigues · AI Content Creator · Mumbai</p>
+</footer>
+
+<script>
+const H=[
+ {t:'bAible — Featured Episode',d:'AI cinematic Bible storytelling',p:'YouTube',k:'yt',id:'eHPHF1JBkzw',u:'https://youtu.be/eHPHF1JBkzw'},
+ {t:'Jaico Publishing House — Podcast',d:'YouTube podcast production',p:'YouTube',k:'yt',id:'9fesrEDO8OU',u:'https://youtu.be/9fesrEDO8OU'},
+ {t:'Jaico Publishing House — AI Ad',d:'Generative-AI brand film',p:'YouTube',k:'yt',id:'V07iw79m1sQ',u:'https://youtu.be/V07iw79m1sQ'}
+];
+const V=[
+ {t:'bAible — Short',d:'Vertical storytelling for Shorts',p:'YT Shorts',k:'yt',id:'ERCQhY8Yvmo',u:'https://youtube.com/shorts/ERCQhY8Yvmo'},
+ {t:'St. Joseph PYC — Reel',d:'Youth parish content',p:'Instagram',k:'ig',id:'DSPAdXkkUI7',u:'https://www.instagram.com/reel/DSPAdXkkUI7/'},
+ {t:'St. Joseph PYC — Reel',d:'Event & community storytelling',p:'Instagram',k:'ig',id:'DWfpAp1Bf8R',u:'https://www.instagram.com/reel/DWfpAp1Bf8R/'},
+ {t:'Jaico Publishing House — Reel',d:'Brand content for Instagram',p:'Instagram',k:'ig',id:'Deg9pCUlnoJ',u:'https://www.instagram.com/reel/Deg9pCUlnoJ/'}
+];
+const src=w=>w.k==='yt'
+ ?`https://www.youtube.com/embed/${w.id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${w.id}&playsinline=1&modestbranding=1&rel=0&start=8`
+ :`https://www.instagram.com/reel/${w.id}/embed/`;
+const card=w=>{
+ const bg=w.k==='yt'?`style="background-image:url(https://i.ytimg.com/vi/${w.id}/hqdefault.jpg)"`:'';
+ return `<div class="work reveal"><div class="media ${w.k}" ${bg} data-id="${w.id}" data-s="${src(w)}" data-u="${w.u}"><span class="platform">${w.p}</span><div class="play"><span>▶</span></div></div><div class="info"><h3>${w.t}</h3><p>${w.d}</p><a href="${w.u}" target="_blank" rel="noopener">Watch ↗</a></div></div>`};
+gridH.innerHTML=H.map(card).join('');
+gridV.innerHTML=V.map(card).join('');
+
+const touch=matchMedia('(hover:none)').matches;
+const web=/^https?:$/.test(location.protocol);
+let timer,cyc;
+const start=m=>{
+ if(m.classList.contains('on'))return;
+ m.classList.add('on');
+ if(m.classList.contains('yt')&&!web){
+  // opened as a local file / sandbox: YouTube blocks embeds there, so cycle preview frames instead
+  m.dataset.bg=m.style.backgroundImage;
+  const f=[1,2,3].map(n=>`url(https://i.ytimg.com/vi/${m.dataset.id}/hq${n}.jpg)`);
+  let i=0;m.style.backgroundImage=f[0];
+  cyc=setInterval(()=>{m.style.backgroundImage=f[++i%3]},650);
+  return;
+ }
+ const fr=document.createElement('iframe');
+ fr.src=m.dataset.s;fr.allow='autoplay; encrypted-media';fr.referrerPolicy='strict-origin-when-cross-origin';fr.title='Preview';
+ m.appendChild(fr);
+};
+const stop=m=>{clearTimeout(timer);clearInterval(cyc);m.querySelector('iframe')?.remove();m.classList.remove('on');if(m.dataset.bg)m.style.backgroundImage=m.dataset.bg};
+document.querySelectorAll('.media').forEach(m=>{
+ if(!touch){
+  m.addEventListener('mouseenter',()=>{timer=setTimeout(()=>start(m),200)});
+  m.addEventListener('mouseleave',()=>stop(m));
+  m.addEventListener('click',()=>window.open(m.dataset.u,'_blank','noopener'));
+ }else{
+  m.addEventListener('click',()=>{document.querySelectorAll('.media.on').forEach(x=>x!==m&&stop(x));m.classList.contains('on')?stop(m):start(m)});
+ }
+});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// active nav pill
+const links=[...document.querySelectorAll('.nav-links a')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('act',l.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+links.forEach(l=>{const s=document.querySelector(l.getAttribute('href'));s&&so.observe(s)});
+</script>
+</body>
+</html>
